@@ -1,0 +1,70 @@
+server:
+  port: 8600
+#  servlet:
+#    context-path: /${spring.application.name}
+spring:
+  application:
+    name: mp-tsf
+#  profiles:
+#    active: soho
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql连接地址:3306/数据库?characterEncoding=utf8
+    username: 用户名
+    password: 密码
+  redis:
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+    cluster:
+      nodes: Redis集群环境1:6379,Redis集群环境2:6380,Redis集群环境3:6381
+    password: Redis集群密码
+
+logging:
+  file: /logs/${spring.application.name}/root.log
+  level:
+    root: INFO
+#logging:
+#  config: classpath:${spring.profiles.active}/logback-${spring.profiles.active}.xml
+management:
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+      path-mapping:
+        shutdown: shutdown
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: true
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 5000
+
+#management:
+#  security:
+#    enabled: false
+tct:
+  enabled: false
+feign:
+  tsf:
+    enabled: true
+  httpclient:
+    connection-timeout: 2000
+
+#  com.netflix.loadbalancer.RandomRule #配置规则 随机
+#  com.netflix.loadbalancer.RoundRobinRule #配置规则 轮询
+#  com.netflix.loadbalancer.RetryRule #配置规则 重试
+#  com.netflix.loadbalancer.WeightedResponseTimeRule #配置规则 响应时间权重
+#  com.netflix.loadbalancer.BestAvailableRule #配置规则 最空闲连接策略
