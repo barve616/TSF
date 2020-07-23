@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "e54b9efc-ae51-4835-abc6-64075187b2f1",
+		"name": "TSF DEMO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "远程调用&服务降级",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/mp-tsf/param?v0=1&v1=<--MP-TSF&v2=<--MP-TSF",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mp-tsf",
+						"param"
+					],
+					"query": [
+						{
+							"key": "v0",
+							"value": "1"
+						},
+						{
+							"key": "v1",
+							"value": "<--MP-TSF"
+						},
+						{
+							"key": "v2",
+							"value": "<--MP-TSF"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "直接失败服务降级",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/mp-tsf/fall",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mp-tsf",
+						"fall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TSF操作数据库",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/mp-tsf/database",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mp-tsf",
+						"database"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TSF操作Redis",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/mp-tsf/redis?key=testkey&value=testvalue&get=testkey",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mp-tsf",
+						"redis"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "testkey"
+						},
+						{
+							"key": "value",
+							"value": "testvalue"
+						},
+						{
+							"key": "get",
+							"value": "testkey"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "负载均衡",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/mp-tsf/service",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mp-tsf",
+						"service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "网关拦截",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "service",
+						"value": "bg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8000/mp-tsf/service",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"mp-tsf",
+						"service"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
